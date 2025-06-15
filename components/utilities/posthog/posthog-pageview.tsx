@@ -4,21 +4,21 @@ This client component tracks pageviews in PostHog.
 </ai_context>
 */
 
-"use client"
+"use client";
 
-import { usePathname } from "next/navigation"
-import posthog from "posthog-js"
-import { useEffect } from "react"
+import { usePathname } from "next/navigation";
+import posthog from "posthog-js";
+import { useEffect } from "react";
 
 export function PostHogPageview() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   useEffect(() => {
     // Track a pageview whenever the pathname changes
     if (pathname) {
-      posthog.capture("$pageview", { path: pathname })
+      posthog.capture("$pageview", { path: pathname });
     }
-  }, [pathname])
+  }, [pathname]);
 
-  return null
+  return null;
 }

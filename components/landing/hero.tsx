@@ -4,21 +4,21 @@ This client component provides the hero section for the landing page.
 </ai_context>
 */
 
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import { motion } from "framer-motion"
-import { ChevronRight, Rocket } from "lucide-react"
-import Link from "next/link"
-import posthog from "posthog-js"
-import AnimatedGradientText from "../magicui/animated-gradient-text"
-import HeroVideoDialog from "../magicui/hero-video-dialog"
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { ChevronRight, Rocket } from "lucide-react";
+import Link from "next/link";
+import posthog from "posthog-js";
+import AnimatedGradientText from "../magicui/animated-gradient-text";
+import HeroVideoDialog from "../magicui/hero-video-dialog";
 
 export const HeroSection = () => {
   const handleGetStartedClick = () => {
-    posthog.capture("clicked_get_started")
-  }
+    posthog.capture("clicked_get_started");
+  };
 
   return (
     <div className="flex flex-col items-center justify-center px-8 pt-32 text-center">
@@ -33,7 +33,7 @@ export const HeroSection = () => {
             🚀 <hr className="mx-2 h-4 w-px shrink-0 bg-gray-300" />
             <span
               className={cn(
-                `animate-gradient inline bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
+                "animate-gradient inline bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent",
               )}
             >
               View the code on GitHub
@@ -99,5 +99,5 @@ export const HeroSection = () => {
         />
       </motion.div>
     </div>
-  )
-}
+  );
+};

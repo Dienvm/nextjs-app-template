@@ -4,28 +4,28 @@ This server layout provides a sidebar and breadcrumb navigation for the todo rou
 </ai_context>
 */
 
-"use server"
+"use server";
 
-import { AppSidebar } from "@/components/sidebar/app-sidebar"
+import { AppSidebar } from "@/components/sidebar/app-sidebar";
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator
-} from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
-  SidebarTrigger
-} from "@/components/ui/sidebar"
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
 
 export default async function TodoLayout({
-  children
+  children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <SidebarProvider>
@@ -54,5 +54,5 @@ export default async function TodoLayout({
         {children}
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

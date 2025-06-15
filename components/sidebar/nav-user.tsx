@@ -4,13 +4,13 @@ This client component provides a user button for the sidebar via Clerk.
 </ai_context>
 */
 
-"use client"
+"use client";
 
-import { SidebarMenu, SidebarMenuItem } from "@/components/ui/sidebar"
-import { UserButton, useUser } from "@clerk/nextjs"
+import { SidebarMenu, SidebarMenuItem } from "@/components/ui/sidebar";
+import { UserButton, useUser } from "@clerk/nextjs";
 
 export function NavUser() {
-  const { user } = useUser()
+  const { user } = useUser();
 
   return (
     <SidebarMenu>
@@ -19,5 +19,5 @@ export function NavUser() {
         {user?.fullName}
       </SidebarMenuItem>
     </SidebarMenu>
-  )
+  );
 }

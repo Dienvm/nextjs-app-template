@@ -4,8 +4,8 @@ This server page returns a simple "Contact Page" component as a (marketing) rout
 </ai_context>
 */
 
-"use server"
+"use server";
 
 export default async function ContactPage() {
-  return <div>Contact Page</div>
+  return <div>Contact Page</div>;
 }

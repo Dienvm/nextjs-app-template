@@ -4,125 +4,96 @@ Contains server actions related to profiles in the DB.
 </ai_context>
 */
 
-"use server"
+"use server";
 
-import { db } from "@/db/db"
+import { db } from "@/db/db";
 import {
-  InsertProfile,
+  type InsertProfile,
   profilesTable,
-  SelectProfile
-} from "@/db/schema/profiles-schema"
-import { ActionState } from "@/types"
-import { eq } from "drizzle-orm"
+  type SelectProfile,
+} from "@/db/schema/profiles-schema";
+import type { ActionState } from "@/types";
+import { eq } from "drizzle-orm";
 
 export async function createProfileAction(
-  data: InsertProfile
+  data: InsertProfile,
 ): Promise<ActionState<SelectProfile>> {
   try {
-    const [newProfile] = await db.insert(profilesTable).values(data).returning()
+    const [newProfile] = await db
+      .insert(profilesTable)
+      .values(data)
+      .returning();
     return {
       isSuccess: true,
       message: "Profile created successfully",
-      data: newProfile
-    }
+      data: newProfile,
+    };
   } catch (error) {
-    console.error("Error creating profile:", error)
-    return { isSuccess: false, message: "Failed to create profile" }
+    console.error("Error creating profile:", error);
+    return { isSuccess: false, message: "Failed to create profile" };
   }
 }
 
 export async function getProfileByUserIdAction(
-  userId: string
+  userId: string,
 ): Promise<ActionState<SelectProfile>> {
   try {
     const profile = await db.query.profiles.findFirst({
-      where: eq(profilesTable.userId, userId)
-    })
+      where: eq(profilesTable.userId, userId),
+    });
     if (!profile) {
-      return { isSuccess: false, message: "Profile not found" }
+      return { isSuccess: false, message: "Profile not found" };
     }
 
     return {
       isSuccess: true,
       message: "Profile retrieved successfully",
-      data: profile
-    }
+      data: profile,
+    };
   } catch (error) {
-    console.error("Error getting profile by user id", error)
-    return { isSuccess: false, message: "Failed to get profile" }
+    console.error("Error getting profile by user id", error);
+    return { isSuccess: false, message: "Failed to get profile" };
   }
 }
 
 export async function updateProfileAction(
   userId: string,
-  data: Partial<InsertProfile>
+  data: Partial<InsertProfile>,
 ): Promise<ActionState<SelectProfile>> {
   try {
     const [updatedProfile] = await db
       .update(profilesTable)
       .set(data)
       .where(eq(profilesTable.userId, userId))
-      .returning()
+      .returning();
 
     if (!updatedProfile) {
-      return { isSuccess: false, message: "Profile not found to update" }
+      return { isSuccess: false, message: "Profile not found to update" };
     }
 
     return {
       isSuccess: true,
       message: "Profile updated successfully",
-      data: updatedProfile
-    }
+      data: updatedProfile,
+    };
   } catch (error) {
-    console.error("Error updating profile:", error)
-    return { isSuccess: false, message: "Failed to update profile" }
-  }
-}
-
-export async function updateProfileByStripeCustomerIdAction(
-  stripeCustomerId: string,
-  data: Partial<InsertProfile>
-): Promise<ActionState<SelectProfile>> {
-  try {
-    const [updatedProfile] = await db
-      .update(profilesTable)
-      .set(data)
-      .where(eq(profilesTable.stripeCustomerId, stripeCustomerId))
-      .returning()
-
-    if (!updatedProfile) {
-      return {
-        isSuccess: false,
-        message: "Profile not found by Stripe customer ID"
-      }
-    }
-
-    return {
-      isSuccess: true,
-      message: "Profile updated by Stripe customer ID successfully",
-      data: updatedProfile
-    }
-  } catch (error) {
-    console.error("Error updating profile by stripe customer ID:", error)
-    return {
-      isSuccess: false,
-      message: "Failed to update profile by Stripe customer ID"
-    }
+    console.error("Error updating profile:", error);
+    return { isSuccess: false, message: "Failed to update profile" };
   }
 }
 
 export async function deleteProfileAction(
-  userId: string
+  userId: string,
 ): Promise<ActionState<void>> {
   try {
-    await db.delete(profilesTable).where(eq(profilesTable.userId, userId))
+    await db.delete(profilesTable).where(eq(profilesTable.userId, userId));
     return {
       isSuccess: true,
       message: "Profile deleted successfully",
-      data: undefined
-    }
+      data: undefined,
+    };
   } catch (error) {
-    console.error("Error deleting profile:", error)
-    return { isSuccess: false, message: "Failed to delete profile" }
+    console.error("Error deleting profile:", error);
+    return { isSuccess: false, message: "Failed to delete profile" };
   }
 }

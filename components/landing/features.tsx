@@ -4,51 +4,40 @@ This client component provides the features section for the landing page.
 </ai_context>
 */
 
-"use client"
+"use client";
 
 import {
   Card,
   CardDescription,
   CardHeader,
-  CardTitle
-} from "@/components/ui/card"
-import { motion } from "framer-motion"
-import {
-  AppWindow,
-  Database,
-  DollarSign,
-  LucideIcon,
-  Shield
-} from "lucide-react"
+  CardTitle,
+} from "@/components/ui/card";
+import { motion } from "framer-motion";
+import { AppWindow, Database, type LucideIcon, Shield } from "lucide-react";
 
 interface FeatureProps {
-  title: string
-  description: string
-  icon: LucideIcon
+  title: string;
+  description: string;
+  icon: LucideIcon;
 }
 
 const features: FeatureProps[] = [
   {
     title: "Frontend",
     description: "Next.js, Tailwind, Shadcn, Framer Motion",
-    icon: AppWindow
+    icon: AppWindow,
   },
   {
     title: "Backend",
     description: "Postgres, Supabase, Drizzle ORM, Server Actions",
-    icon: Database
+    icon: Database,
   },
   {
     title: "Auth",
     description: "Clerk",
-    icon: Shield
+    icon: Shield,
   },
-  {
-    title: "Payments",
-    description: "Stripe",
-    icon: DollarSign
-  }
-]
+];
 
 const FeatureCard = ({ title, description, icon: Icon }: FeatureProps) => (
   <motion.div
@@ -64,7 +53,7 @@ const FeatureCard = ({ title, description, icon: Icon }: FeatureProps) => (
       </CardHeader>
     </Card>
   </motion.div>
-)
+);
 
 export const FeaturesSection = () => {
   return (
@@ -76,7 +65,7 @@ export const FeaturesSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h2 className="mb-12 text-center text-4xl font-bold">Tech Stack</h2>
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
               <FeatureCard key={index} {...feature} />
             ))}
@@ -84,5 +73,5 @@ export const FeaturesSection = () => {
         </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};

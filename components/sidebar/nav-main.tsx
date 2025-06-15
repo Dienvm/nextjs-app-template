@@ -4,13 +4,13 @@ This client component provides a main navigation for the sidebar.
 </ai_context>
 */
 
-"use client"
+"use client";
 
 import {
   Collapsible,
   CollapsibleContent,
-  CollapsibleTrigger
-} from "@/components/ui/collapsible"
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -19,26 +19,26 @@ import {
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarMenuSubButton,
-  SidebarMenuSubItem
-} from "@/components/ui/sidebar"
-import { ChevronRight, type LucideIcon } from "lucide-react"
+  SidebarMenuSubItem,
+} from "@/components/ui/sidebar";
+import { ChevronRight, type LucideIcon } from "lucide-react";
 
 export function NavMain({
-  items
+  items,
 }: {
   items: {
-    title: string
-    url: string
-    icon?: LucideIcon
-    isActive?: boolean
-    items?: { title: string; url: string }[]
-  }[]
+    title: string;
+    url: string;
+    icon?: LucideIcon;
+    isActive?: boolean;
+    items?: { title: string; url: string }[];
+  }[];
 }) {
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Platform</SidebarGroupLabel>
       <SidebarMenu>
-        {items.map(item => (
+        {items.map((item) => (
           <Collapsible
             key={item.title}
             asChild
@@ -55,7 +55,7 @@ export function NavMain({
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <SidebarMenuSub>
-                  {item.items?.map(subItem => (
+                  {item.items?.map((subItem) => (
                     <SidebarMenuSubItem key={subItem.title}>
                       <SidebarMenuSubButton asChild>
                         <a href={subItem.url}>
@@ -71,5 +71,5 @@ export function NavMain({
         ))}
       </SidebarMenu>
     </SidebarGroup>
-  )
+  );
 }

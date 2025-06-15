@@ -4,7 +4,7 @@ This client component provides the sidebar for the app.
 </ai_context>
 */
 
-"use client"
+"use client";
 
 import {
   AudioWaveform,
@@ -13,48 +13,48 @@ import {
   Command,
   Frame,
   GalleryVerticalEnd,
-  Map,
+  Map as MapIcon,
   PieChart,
   Settings2,
-  SquareTerminal
-} from "lucide-react"
-import * as React from "react"
+  SquareTerminal,
+} from "lucide-react";
+import type * as React from "react";
 
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
-  SidebarRail
-} from "@/components/ui/sidebar"
-import { NavMain } from "./nav-main"
-import { NavProjects } from "./nav-projects"
-import { NavUser } from "./nav-user"
-import { TeamSwitcher } from "./team-switcher"
+  SidebarRail,
+} from "@/components/ui/sidebar";
+import { NavMain } from "./nav-main";
+import { NavProjects } from "./nav-projects";
+import { NavUser } from "./nav-user";
+import { TeamSwitcher } from "./team-switcher";
 
 // Sample data
 const data = {
   user: {
     name: "shadcn",
     email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg"
+    avatar: "/avatars/shadcn.jpg",
   },
   teams: [
     {
       name: "Acme Inc",
       logo: GalleryVerticalEnd,
-      plan: "Enterprise"
+      plan: "Enterprise",
     },
     {
       name: "Acme Corp.",
       logo: AudioWaveform,
-      plan: "Startup"
+      plan: "Startup",
     },
     {
       name: "Evil Corp.",
       logo: Command,
-      plan: "Free"
-    }
+      plan: "Free",
+    },
   ],
   navMain: [
     {
@@ -65,8 +65,8 @@ const data = {
       items: [
         { title: "History", url: "#" },
         { title: "Starred", url: "#" },
-        { title: "Settings", url: "#" }
-      ]
+        { title: "Settings", url: "#" },
+      ],
     },
     {
       title: "Models",
@@ -75,8 +75,8 @@ const data = {
       items: [
         { title: "Genesis", url: "#" },
         { title: "Explorer", url: "#" },
-        { title: "Quantum", url: "#" }
-      ]
+        { title: "Quantum", url: "#" },
+      ],
     },
     {
       title: "Documentation",
@@ -86,8 +86,8 @@ const data = {
         { title: "Introduction", url: "#" },
         { title: "Get Started", url: "#" },
         { title: "Tutorials", url: "#" },
-        { title: "Changelog", url: "#" }
-      ]
+        { title: "Changelog", url: "#" },
+      ],
     },
     {
       title: "Settings",
@@ -97,16 +97,16 @@ const data = {
         { title: "General", url: "#" },
         { title: "Team", url: "#" },
         { title: "Billing", url: "#" },
-        { title: "Limits", url: "#" }
-      ]
-    }
+        { title: "Limits", url: "#" },
+      ],
+    },
   ],
   projects: [
     { name: "Design Engineering", url: "#", icon: Frame },
     { name: "Sales & Marketing", url: "#", icon: PieChart },
-    { name: "Travel", url: "#", icon: Map }
-  ]
-}
+    { name: "Travel", url: "#", icon: MapIcon },
+  ],
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -123,5 +123,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

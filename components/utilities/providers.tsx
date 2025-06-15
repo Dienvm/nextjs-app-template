@@ -4,12 +4,12 @@ This client component provides the providers for the app.
 </ai_context>
 */
 
-"use client"
+"use client";
 
-import { TooltipProvider } from "@/components/ui/tooltip"
-import { ThemeProvider as NextThemesProvider } from "next-themes"
-import { ThemeProviderProps } from "next-themes/dist/types"
-import { CSPostHogProvider } from "./posthog/posthog-provider"
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import type { ThemeProviderProps } from "next-themes/dist/types";
+import { CSPostHogProvider } from "./posthog/posthog-provider";
 
 export const Providers = ({ children, ...props }: ThemeProviderProps) => {
   return (
@@ -18,5 +18,5 @@ export const Providers = ({ children, ...props }: ThemeProviderProps) => {
         <CSPostHogProvider>{children}</CSPostHogProvider>
       </TooltipProvider>
     </NextThemesProvider>
-  )
-}
+  );
+};

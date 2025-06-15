@@ -4,14 +4,14 @@ This server layout provides a shared header and basic structure for (marketing) 
 </ai_context>
 */
 
-"use server"
+"use server";
 
-import Header from "@/components/header"
+import Header from "@/components/header";
 
 export default async function MarketingLayout({
-  children
+  children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <div className="flex min-h-screen flex-col">
@@ -19,5 +19,5 @@ export default async function MarketingLayout({
 
       <div className="flex-1">{children}</div>
     </div>
-  )
+  );
 }

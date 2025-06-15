@@ -4,10 +4,10 @@ This client component provides a team switcher for the sidebar.
 </ai_context>
 */
 
-"use client"
+"use client";
 
-import { ChevronsUpDown, Plus } from "lucide-react"
-import * as React from "react"
+import { ChevronsUpDown, Plus } from "lucide-react";
+import * as React from "react";
 
 import {
   DropdownMenu,
@@ -16,26 +16,26 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu"
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  useSidebar
-} from "@/components/ui/sidebar"
+  useSidebar,
+} from "@/components/ui/sidebar";
 
 export function TeamSwitcher({
-  teams
+  teams,
 }: {
   teams: {
-    name: string
-    logo: React.ElementType
-    plan: string
-  }[]
+    name: string;
+    logo: React.ElementType;
+    plan: string;
+  }[];
 }) {
-  const { isMobile } = useSidebar()
-  const [activeTeam, setActiveTeam] = React.useState(teams[0])
+  const { isMobile } = useSidebar();
+  const [activeTeam, setActiveTeam] = React.useState(teams[0]);
 
   return (
     <SidebarMenu>
@@ -91,5 +91,5 @@ export function TeamSwitcher({
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>
-  )
+  );
 }

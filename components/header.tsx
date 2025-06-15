@@ -4,45 +4,45 @@ This client component provides the header for the app.
 </ai_context>
 */
 
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   SignedIn,
   SignedOut,
   SignInButton,
   SignUpButton,
-  UserButton
-} from "@clerk/nextjs"
-import { Menu, Rocket, X } from "lucide-react"
-import Link from "next/link"
-import { useEffect, useState } from "react"
-import { ThemeSwitcher } from "./utilities/theme-switcher"
+  UserButton,
+} from "@clerk/nextjs";
+import { Menu, Rocket, X } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { ThemeSwitcher } from "./utilities/theme-switcher";
 
 const navLinks = [
   { href: "/about", label: "About" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/contact", label: "Contact" }
-]
+  { href: "/contact", label: "Contact" },
+];
 
-const signedInLinks = [{ href: "/todo", label: "Todo" }]
+const signedInLinks = [{ href: "/todo", label: "Todo" }];
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0)
-    }
+      setIsScrolled(window.scrollY > 0);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header
@@ -61,7 +61,7 @@ export default function Header() {
         </div>
 
         <nav className="absolute left-1/2 hidden -translate-x-1/2 space-x-2 font-semibold md:flex">
-          {navLinks.map(link => (
+          {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -72,7 +72,7 @@ export default function Header() {
           ))}
 
           <SignedIn>
-            {signedInLinks.map(link => (
+            {signedInLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -130,7 +130,7 @@ export default function Header() {
                 Home
               </Link>
             </li>
-            {navLinks.map(link => (
+            {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
@@ -142,7 +142,7 @@ export default function Header() {
               </li>
             ))}
             <SignedIn>
-              {signedInLinks.map(link => (
+              {signedInLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -158,5 +158,5 @@ export default function Header() {
         </nav>
       )}
     </header>
-  )
+  );
 }
